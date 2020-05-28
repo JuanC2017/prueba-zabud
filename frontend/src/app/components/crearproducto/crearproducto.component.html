@@ -1,0 +1,81 @@
+<app-cabecera></app-cabecera>
+
+
+<form action="" #productoForm='ngForm' (ngSubmit)='onSubmit(productoForm)'>
+
+    <div class="section section-contact-us text-center">
+        <div class="container">
+            <h2 class="title">{{ title }}</h2>
+            <p class="description">Rellenar todos los campos</p>
+            <div class="row">
+                <div class="col-lg-6 text-center col-md-8 ml-auto mr-auto">
+
+                    <div *ngIf="status == 'success'">
+                        <span class="badge badge-success">Se ha creado el paciente correctamente</span>
+                    </div>
+
+                    <div *ngIf="status == 'failed'">
+                        <span class="badge badge-danger">No se ha podido crear el paciente correctamente</span>
+                    </div>
+
+                    <div class="input-group input-lg" [ngClass]="{'input-group-focus':focus===true}">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="now-ui-icons users_circle-08"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="producto.nombre"
+                            placeholder="Nombre" (focus)="focus=true" (blur)="focus=false" required>
+                    </div>
+                    <span *ngIf="name.touched && !name.valid" class="badge badge-danger">El nombre es obligatorio</span>
+
+                    <div class="input-group input-lg" [ngClass]="{'input-group-focus':focus===true}">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="now-ui-icons users_circle-08"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" name="surename" #surename="ngModel"
+                            [(ngModel)]="producto.codigo" placeholder="Código" (focus)="focus=true"
+                            (blur)="focus=false" required>
+                    </div>
+                    <span *ngIf="surename.touched && !surename.valid" class="badge badge-danger">El codigo
+                        obligatorio</span>
+
+                    <div class="input-group input-lg" [ngClass]="{'input-group-focus':focus===true}">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="now-ui-icons users_circle-08"></i>
+                            </span>
+                        </div>
+                        <input type="number" class="form-control" name="age" #age="ngModel" [(ngModel)]="producto.valor"
+                            placeholder="Valor" (focus)="focus=true" (blur)="focus=false" required>
+                    </div>
+                    <span *ngIf="name.touched && !name.valid" class="badge badge-danger">El valor es obligatorio</span>
+
+                
+                  
+               
+
+                   
+
+                    <div class="send-button">
+                        <input type="submit" value="Enviar" class="btn btn-primary btn-round btn-block btn-lg"
+                            [disabled]="!productoForm.form.valid">
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+
+
+
+
+
